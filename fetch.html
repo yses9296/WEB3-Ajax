@@ -4,17 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ajax Fetch</title>
 </head>
 <body>
-    <input type="button" 
-            value="Fetch"
+    <input type="button" value="Fetch"
             onclick="
+                /* 
+                //익명 함수 (이름이 없는 함수)
                 fetch('html').then(function(response){
                     response.text().then(function(text){
                         alert(text);
                     })
                 })
-            ">
+                */  
+                fetch('html').then((response) => {
+                    console.log(response);
+
+                    response.text().then((text) => {
+                        document.querySelector('article').innerHTML = text;
+                    })
+                })
+               
+               /*  
+               //Asynchronous 비동기식
+               
+               function callBack(){
+                console.log('response end');
+               }
+               fetch('html').then(callBack);
+               console.log('Test 1');
+               */
+    ">
+    <article></article>
+
 </body>
 </html>
