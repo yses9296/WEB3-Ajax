@@ -13,36 +13,12 @@
 </head>
 
 <body>
-    <h1><a href="index.html">WEB</a></h1>
+    <h1><a href="#!main" onclick="fetchPage('main')">WEB</a></h1>
     <input type="button" id="night_day" value="night" onclick="nightDayHandler(this);">
 
-    <ul>
-        <!-- 
-            <li>
-                <a onclick="document.querySelector('article').innerHTML = '<h2>HTML</h2>HTML is ...'">HTML</a>
-            </li>
-            <li>
-                <a onclick="document.querySelector('article').innerHTML = '<h2>CSS</h2>CSS is ...'">CSS</a>
-            </li>
-            <li>
-                <a onclick="document.querySelector('article').innerHTML = '<h2>JavaScript</h2>JavaScript is ...'">JavaScript</a>
-            </li> 
-        -->
-        <li>
-            <a href="#!html" onclick="fetchPage('html')">HTML</a>
-        </li>
-        <li>
-            <a href="#!css" onclick="fetchPage('css')">CSS</a>
-        </li>
-        <li>
-            <a href="#!JavaScript" onclick="fetchPage('JavaScript')">JavaScript</a>
-        </li>
+    <ol id="nav"></ol>
 
-    </ul>
-
-    <article>
-
-    </article>
+    <article></article>
 
     <script>
         function fetchPage(name){
@@ -54,11 +30,18 @@
         }
 
         if(location.hash){
-            fetchPage(location.hash.substr(2))
+            fetchPage(location.hash.substr(2));
         }
         else {
-            fetchPage('welcome');
+            fetchPage('main');
         }
+
+        fetch('list').then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('#nav').innerHTML = text;
+                });
+            });
+
     </script>
 </body>
 </html>
