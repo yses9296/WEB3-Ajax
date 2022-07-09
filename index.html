@@ -29,33 +29,19 @@
             </li> 
         -->
         <li>
-            <a onclick="fetchPage('html')">HTML</a>
+            <a href="#!html" onclick="fetchPage('html')">HTML</a>
         </li>
         <li>
-            <a onclick="fetchPage('css')">CSS</a>
+            <a href="#!css" onclick="fetchPage('css')">CSS</a>
         </li>
         <li>
-            <a onclick="fetchPage('JavaScript')">JavaScript</a>
+            <a href="#!JavaScript" onclick="fetchPage('JavaScript')">JavaScript</a>
         </li>
 
     </ul>
 
     <article>
-        <h2>WEB</h2>
-        <p>
-            The World Wide Web (WWW), commonly known as the Web, is the world's dominant software platform. It is an
-            information space where documents and other web resources can be accessed through the Internet using a web
-            browser. The Web has changed people's lives immeasurably. It is the primary tool billions of people
-            worldwide use to interact on the Internet. It was invented by Tim Berners-Lee at CERN in 1989 and opened to
-            the public in 1991.
 
-            Web resources may be any type of downloadable media. Web pages are documents interconnected by hypertext links
-            formatted in Hypertext Markup Language (HTML). The HTML syntax displays embedded hyperlinks with URLs, which
-            permits users to navigate to other web resources. In addition to text, web pages may contain references to
-            images, video, audio, and software components, which are either displayed or internally executed in the user's
-            web browser to render pages or streams of multimedia content. Web applications are web pages that function as
-            application software.
-        </p> 
     </article>
 
     <script>
@@ -65,6 +51,13 @@
                     document.querySelector('article').innerHTML = text;
                 });
             });
+        }
+
+        if(location.hash){
+            fetchPage(location.hash.substr(2))
+        }
+        else {
+            fetchPage('welcome');
         }
     </script>
 </body>
