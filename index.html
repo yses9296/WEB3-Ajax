@@ -29,25 +29,13 @@
             </li> 
         -->
         <li>
-            <a onclick="fetch('html').then(function(response){
-                response.text().then(function(text){
-                    document.querySelector('article').innerHTML = text;
-                });
-            })">HTML</a>
+            <a onclick="fetchPage('html')">HTML</a>
         </li>
         <li>
-            <a onclick="fetch('css').then(function(response){
-                response.text().then(function(text){
-                    document.querySelector('article').innerHTML = text;
-                });
-            })">CSS</a>
+            <a onclick="fetchPage('css')">CSS</a>
         </li>
         <li>
-            <a onclick="fetch('JavaScript').then(function(response){
-                response.text().then(function(text){
-                    document.querySelector('article').innerHTML = text;
-                });
-            })">JavaScript</a>
+            <a onclick="fetchPage('JavaScript')">JavaScript</a>
         </li>
 
     </ul>
@@ -70,5 +58,14 @@
         </p> 
     </article>
 
+    <script>
+        function fetchPage(name){
+            fetch(name).then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('article').innerHTML = text;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
